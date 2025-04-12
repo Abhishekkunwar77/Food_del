@@ -1,0 +1,138 @@
+.list-table-format{
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 0.5fr;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border: 1px solid #cacaca;
+    font-size: 13px;
+}
+.list-table-format.title{
+    background-color: #f9f9f9;
+}
+.list-table-format:last-child {
+  margin-bottom: 30px;
+}
+
+.list-table-format img{
+    width: 50px;
+}
+
+@media (max-width:600px) {
+    .list-table-format{
+        grid-template-columns: 1fr 3fr 1fr;
+        gap: 15px;
+    }
+    .list-table-format.title{
+        display: none;
+    }
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.modal h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.modal p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-confirm {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-confirm:hover {
+    background-color: #c0392b;
+}
+
+.modal-cancel {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-cancel:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive modal adjustments */
+@media (max-width: 600px) {
+    .modal {
+        width: 85%;
+        padding: 15px;
+    }
+
+    .modal h3 {
+        font-size: 1.3rem;
+    }
+
+    .modal p {
+        font-size: 0.9rem;
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .modal-confirm,
+    .modal-cancel {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+.list-table-format .cursor {
+    color: #e74c3c;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    font-size: 13px;
+    transition: color 0.2s ease;
+}
+
+.list-table-format .cursor:hover {
+    color: #c0392b;
+}
