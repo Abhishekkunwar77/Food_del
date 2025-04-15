@@ -9,69 +9,48 @@ const Orders = ({ url }) => {
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
 
-  const fetchAllOrder = async () => {
-    try {
-      const token = localStorage.getItem("token"); // Adjust based on your auth setup
-      if (!token) {
-        toast.error("Please log in to view orders");
-        navigate("/login"); // Redirect to login page
-        return;
-      }
-      console.log("Requesting URL:", url + "/api/order/list");
-      const response = await axios.get(url + "/api/order/list", {
-        headers: {
-          token: token, // Send token as 'token' header
-        },
-      });
-      console.log("Response:", response.data);
-      if (response.data.success) {
-        setOrders(response.data.data);
-        console.log("Orders:", response.data.data);
-      } else {
-        console.error("API error:", response.data.message);
-        toast.error(response.data.message); // Show "Not Authorized Login Again"
-      }
-    } catch (error) {
-      console.error("Axios error:", error.response?.data || error.message);
-      toast.error(error.response?.data?.message || "Error fetching orders");
+const fetchAllOrder = async () => {
+  try {
+    console.log("Requesting URL:", url + "/api/order/list");
+    const response = await axios.get(url + "/api/order/list"); // No token needed
+    console.log("Response:", response.data);
+    if (response.data.success) {
+      setOrders(response.data.data);
+      console.log("Orders:", response.data.data);
+    } else {
+      console.error("API error:", response.data.message);
+      toast.error(response.data.message);
     }
-  };
+  } catch (error) {
+    console.error("Axios error:", error.response?.data || error.message);
+    toast.error(error.response?.data?.message || "Error fetching orders");
+  }
+};
 
-
-  const statusHandler = async (event, orderId) => {
-    try {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        toast.error("Please log in to update status");
-        navigate("/login");
-        return;
+const statusHandler = async (event, orderId) => {
+  try {
+    const response = await axios.post(
+      url + "/api/order/status",
+      {
+        orderId,
+        status: event.target.value,
       }
-      const response = await axios.post(
-        url + "/api/order/status",
-        {
-          orderId,
-          status: event.target.value,
-        },
-        {
-          headers: {
-            token: token, // Send token as 'token' header
-          },
-        }
-      );
-      if (response.data.success) {
-        toast.success(response.data.message);
-        await fetchAllOrder();
-      } else {
-        toast.error(response.data.message);
-      }
-    } catch (error) {
-      console.error(
-        "Status update error:",
-        error.response?.data || error.message
-      );
-      toast.error(error.response?.data?.message || "Error updating status");
+      // Removed headers: { token: token }
+    );
+    if (response.data.success) {
+      toast.success(response.data.message);
+      await fetchAllOrder();
+    } else {
+      toast.error(response.data.message);
     }
-  };
+  } catch (error) {
+    console.error(
+      "Status update error:",
+      error.response?.data || error.message
+    );
+    toast.error(error.response?.data?.message || "Error updating status");
+  }
+};
 
   useEffect(() => {
     fetchAllOrder();
