@@ -1,19 +1,64 @@
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 4%;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 4%;
+  font-family: Outfit;
 }
-.navbar .logo{
-    width: max(10%,80px);
-    border: 50%;
-    }
-.navbar .profile{
-    width: 40px;
-    height: 50px;
-    border-radius:50%;
-    border:1px solid green;
+
+.navbar .logo {
+  width: max(10%, 80px);
+  border: 50%;
 }
-.login-conditon{
-    font-size: 20px;
+
+.navbar .profile {
+  width: 40px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid green;
+}
+
+.login-condition {
+  font-size: 20px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.login-btn,
+.logout-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn {
+  background-color: rgb(65, 163, 65);
+  color: white;
+}
+
+.login-btn:hover {
+  background-color: #166700;
+}
+
+.logout-btn {
+  background-color: #eb7a86;
+  color: white;
+}
+
+.logout-btn:hover {
+  background-color: red;
 }

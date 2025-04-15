@@ -1,52 +1,96 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./List.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 
 const List = ({ url }) => {
+  const navigate = useNavigate();
   const [list, setList] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [foodIdToDelete, setFoodIdToDelete] = useState(null);
 
+  // Check if admin is logged in
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast.error("Please log in to see items");
+      navigate("/login");
+    }
+  }, [navigate]);
+
   const fetchList = async () => {
-    const response = await axios.get(`${url}/api/food/list`);
-    if (response.data.success) {
-      setList(response.data.data);
-    } else {
-      toast.error("Error");
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.get(`${url}/api/food/list`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (response.data.success) {
+        setList(response.data.data);
+      } else {
+        toast.error("Error fetching list");
+      }
+    } catch (error) {
+      toast.error("Error fetching list");
+      if (error.response?.status === 401) {
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
     }
   };
 
   const removeFood = async (foodId) => {
-    const response = await axios.post(`${url}/api/food/remove`, { id: foodId });
-    await fetchList();
-    if (response.data.success) {
-      toast.success(response.data.message);
-    } else {
-      toast.error("Error");
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        `${url}/api/food/remove`,
+        { id: foodId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      await fetchList();
+      if (response.data.success) {
+        toast.success(response.data.message);
+      } else {
+        toast.error("Error removing item");
+      }
+    } catch (error) {
+      toast.error("Error removing item");
+      if (error.response?.status === 401) {
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
     }
   };
 
   const handleRemoveClick = (foodId) => {
     setFoodIdToDelete(foodId);
-    setShowModal(true); // Show the modal
+    setShowModal(true);
   };
 
   const confirmDelete = () => {
     if (foodIdToDelete) {
-      removeFood(foodIdToDelete); // Proceed with deletion
+      removeFood(foodIdToDelete);
     }
-    setShowModal(false); // Close the modal
-    setFoodIdToDelete(null); // Reset
+    setShowModal(false);
+    setFoodIdToDelete(null);
   };
 
   const cancelDelete = () => {
-    setShowModal(false); // Close the modal
-    setFoodIdToDelete(null); // Reset
+    setShowModal(false);
+    setFoodIdToDelete(null);
   };
 
   useEffect(() => {
-    fetchList();
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetchList();
+    }
   }, []);
 
   return (

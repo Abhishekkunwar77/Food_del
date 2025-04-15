@@ -112,4 +112,21 @@ const updateStatus=async (req, res) => {
   }
 } 
 
-export { placeOrder, verifyOrder, userOrders, listOrders, updateStatus };
+// ... existing imports and functions ...
+
+const adminLogin = (req, res) => {
+  const { email, password } = req.body;
+  // Hardcoded admin credentials (for testing only)
+  const adminEmail = "admin@foodie.com";
+  const adminPassword = "admin123";
+
+  if (email === adminEmail && password === adminPassword) {
+    // Simulate a token (in production, use jwt.sign)
+    const token = "dummy-admin-token"; // Replace with real JWT in production
+    res.json({ success: true, message: "Login successful", token });
+  } else {
+    res.json({ success: false, message: "Not Authorized Login Again" });
+  }
+};
+
+export { placeOrder, verifyOrder, userOrders, listOrders, updateStatus, adminLogin };

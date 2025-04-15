@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Add.css";
 import { assets } from "../../assets/assets";
-import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-const Add = ({url}) => {
+
+const Add = ({ url }) => {
+  const navigate = useNavigate();
   const [image, setImage] = useState(false);
   const [data, setData] = useState({
     name: "",
@@ -12,6 +14,15 @@ const Add = ({url}) => {
     price: "",
     category: "Salad",
   });
+
+  // Check if admin is logged in
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast.error("Please log in to access this page");
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const onChangeHandler = (event) => {
     const name = event.target.name;
@@ -21,26 +32,42 @@ const Add = ({url}) => {
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-    const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("description", data.description);
-    formData.append("price", Number(data.price));
-    formData.append("category", data.category);
-    formData.append("image", image);
-    const response = await axios.post(`${url}/api/food/add`, formData);
-    if (response.data.success) {
-      setData({
-        name: "",
-        description: "",
-        price: "",
-        category: "Salad",
+    const token = localStorage.getItem("token");
+    try {
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("description", data.description);
+      formData.append("price", Number(data.price));
+      formData.append("category", data.category);
+      formData.append("image", image);
+
+      const response = await axios.post(`${url}/api/food/add`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
-      setImage(false);
-      toast.success(response.data.message);
-    } else {
-      toast.error(response.data.message);
+
+      if (response.data.success) {
+        setData({
+          name: "",
+          description: "",
+          price: "",
+          category: "Salad",
+        });
+        setImage(false);
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error("Error adding item");
+      if (error.response?.status === 401) {
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
     }
   };
+
   return (
     <div className="add">
       <form onSubmit={onSubmitHandler} className="flex-col">
@@ -54,7 +81,6 @@ const Add = ({url}) => {
           </label>
           <input
             onChange={(e) => setImage(e.target.files[0])}
-            // onChange={onImageChange}
             type="file"
             id="image"
             hidden

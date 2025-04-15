@@ -9,48 +9,50 @@ const Orders = ({ url }) => {
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
 
-const fetchAllOrder = async () => {
-  try {
-    console.log("Requesting URL:", url + "/api/order/list");
-    const response = await axios.get(url + "/api/order/list"); // No token needed
-    console.log("Response:", response.data);
-    if (response.data.success) {
-      setOrders(response.data.data);
-      console.log("Orders:", response.data.data);
-    } else {
-      console.error("API error:", response.data.message);
-      toast.error(response.data.message);
-    }
-  } catch (error) {
-    console.error("Axios error:", error.response?.data || error.message);
-    toast.error(error.response?.data?.message || "Error fetching orders");
-  }
-};
-
-const statusHandler = async (event, orderId) => {
-  try {
-    const response = await axios.post(
-      url + "/api/order/status",
-      {
-        orderId,
-        status: event.target.value,
+  const fetchAllOrder = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        toast.error("Please log in to view orders");
+        navigate("/login");
+        return;
       }
-      // Removed headers: { token: token }
-    );
-    if (response.data.success) {
-      toast.success(response.data.message);
-      await fetchAllOrder();
-    } else {
-      toast.error(response.data.message);
+      const response = await axios.get(url + "/api/order/list", {
+        headers: { token: token },
+      });
+      if (response.data.success) {
+        setOrders(response.data.data);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error("Error fetching orders");
     }
-  } catch (error) {
-    console.error(
-      "Status update error:",
-      error.response?.data || error.message
-    );
-    toast.error(error.response?.data?.message || "Error updating status");
-  }
-};
+  };
+
+  const statusHandler = async (event, orderId) => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        toast.error("Please log in to update status");
+        navigate("/login");
+        return;
+      }
+      const response = await axios.post(
+        url + "/api/order/status",
+        { orderId, status: event.target.value },
+        { headers: { token: token } }
+      );
+      if (response.data.success) {
+        toast.success(response.data.message);
+        await fetchAllOrder();
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error("Error updating status");
+    }
+  };
 
   useEffect(() => {
     fetchAllOrder();
@@ -68,13 +70,11 @@ const statusHandler = async (event, orderId) => {
               <img src={assets.parcel_icon} alt="Parcel Icon" />
               <div>
                 <p className="order-item-food">
-                  {order.items.map((item, idx) => {
-                    if (idx === order.items.length - 1) {
-                      return item.name + " x " + item.quantity;
-                    } else {
-                      return item.name + " x " + item.quantity + ", ";
-                    }
-                  })}
+                  {order.items.map((item, idx) =>
+                    idx === order.items.length - 1
+                      ? `${item.name} x ${item.quantity}`
+                      : `${item.name} x ${item.quantity}, `
+                  )}
                 </p>
                 <p className="order-item-name">
                   {order.address.firstName + " " + order.address.lastName}
