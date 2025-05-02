@@ -1,19 +1,33 @@
-import React, { use, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { assets } from "../../assets/assets.js";
 import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext.jsx";
+
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
+  const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+  const navigate = useNavigate();
 
-  const {getTotalCartAmount, token, setToken} = useContext (StoreContext);
-  const navigate= useNavigate();
-  const logout=()=>{
+  // Function to handle section navigation
+  const navigateToSection = (sectionId) => {
+    // Navigate to homepage
+    navigate("/");
+    // Scroll to the section after a slight delay to ensure the page loads
+    setTimeout(() => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100); // Adjust delay if needed
+  };
+
+  const logout = () => {
     localStorage.removeItem("token");
     setToken("");
-    useNavigate("/");
+    navigate("/");
+  };
 
-  }
   return (
     <div className="navbar">
       <Link to="/">
@@ -27,27 +41,33 @@ const Navbar = ({ setShowLogin }) => {
         >
           Home
         </Link>
-        <a
-          href="#explore-menu"
-          onClick={() => setMenu("menu")}
+        <li
+          onClick={() => {
+            setMenu("menu");
+            navigateToSection("explore-menu");
+          }}
           className={menu === "menu" ? "active" : ""}
         >
           Menu
-        </a>
-        <a
-          href="#app-download"
-          onClick={() => setMenu("mobile-app")}
+        </li>
+        <li
+          onClick={() => {
+            setMenu("mobile-app");
+            navigateToSection("app-download");
+          }}
           className={menu === "mobile-app" ? "active" : ""}
         >
           Mobile-App
-        </a>
-        <a
-          href="#footer"
-          onClick={() => setMenu("contact-us")}
+        </li>
+        <li
+          onClick={() => {
+            setMenu("contact-us");
+            navigateToSection("footer");
+          }}
           className={menu === "contact-us" ? "active" : ""}
         >
           Contact Us
-        </a>
+        </li>
       </ul>
       <div className="navbar-right">
         <img src={assets.search_icon} alt="" />
@@ -55,20 +75,26 @@ const Navbar = ({ setShowLogin }) => {
           <Link to="/cart">
             <img src={assets.basket_icon} alt="" />
           </Link>
-          <div  className={getTotalCartAmount()===0?"":"dot"}></div>
+          <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
-        {!token?        <button onClick={() => setShowLogin(true)}>Signin</button>
-:<div
-  className='navbar-profile'
-  >
-    <img src={assets.profile_icon} alt="" />
-    <ul className="nav-profile-dropdown">
-      <li onClick={()=>navigate('/myorders')}><img src={assets.bag_icon} alt="" />Orders</li>
-      <hr />
-      <li onClick={logout}><img src={assets.logout_icon} alt="" /><p>Logout</p></li>
-
-      </ul>
-  </div>}
+        {!token ? (
+          <button onClick={() => setShowLogin(true)}>Signin</button>
+        ) : (
+          <div className="navbar-profile">
+            <img src={assets.profile_icon} alt="" />
+            <ul className="nav-profile-dropdown">
+              <li onClick={() => navigate("/myorders")}>
+                <img src={assets.bag_icon} alt="" />
+                Orders
+              </li>
+              <hr />
+              <li onClick={logout}>
+                <img src={assets.logout_icon} alt="" />
+                <p>Logout</p>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
