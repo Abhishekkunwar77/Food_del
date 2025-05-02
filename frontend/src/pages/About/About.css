@@ -1,0 +1,520 @@
+.ab-about-container {
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.ab-about-header {
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 10px;
+  margin-bottom: 40px;
+}
+
+.ab-header-title {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.ab-header-subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-top: 30px;
+}
+
+.ab-section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ab-section-text {
+  font-size: 1.1rem;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+.ab-why-choose-section {
+  margin-bottom: 60px;
+}
+
+.ab-why-choose-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.ab-why-choose-item {
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ab-why-choose-image {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.ab-why-choose-item h3 {
+  font-size: 1.5rem;
+  color: #2d3748;
+  margin-bottom: 15px;
+}
+
+.ab-why-choose-item p {
+  font-size: 1rem;
+  color: #4a5568;
+}
+
+.ab-mission-section {
+  margin-bottom: 60px;
+}
+
+.ab-mission-content {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.ab-mission-image {
+  flex: 1;
+  min-width: 300px;
+  height: fit-content;
+  width: fit-content;
+}
+
+.ab-mission-image-content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.ab-mission-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.ab-blog-section {
+  padding: 40px 20px;
+  background: #fff;
+}
+
+.ab-blog-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.ab-blog-title::before,
+.ab-blog-title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 100px;
+  height: 2px;
+  background: green;
+}
+
+.ab-blog-title::before {
+  left: 0;
+  transform: translateX(80px);
+}
+
+.ab-blog-title::after {
+  right: 0;
+  transform: translateX(-80px);
+}
+
+.ab-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.ab-blog-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.ab-blog-image-placeholder {
+  height: 150px;
+  background: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #666;
+  border-bottom: 1px solid #ddd;
+}
+
+.ab-blog-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ab-blog-content {
+  padding: 15px;
+}
+
+.ab-blog-date {
+  font-size: 0.9rem;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.ab-blog-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.ab-read-more-button {
+  background: #fff;
+  border: 1px solid green;
+  color: green;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.ab-read-more-button:hover {
+  background: green;
+  color: #fff;
+}
+
+/* Testimonial Section Styles */
+.ab-testimonial-section {
+  padding: 40px 20px;
+}
+
+.ab-testimonial-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.ab-testimonial-title::before,
+.ab-testimonial-title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 100px;
+  height: 2px;
+  background: green;
+}
+
+.ab-testimonial-title::before {
+  left: 0;
+  transform: translateX(80px);
+}
+
+.ab-testimonial-title::after {
+  right: 0;
+  transform: translateX(-80px);
+}
+
+.ab-testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.ab-testimonial-card {
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.ab-testimonial-profile-pic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ab-testimonial-content {
+  flex: 1;
+}
+
+.ab-testimonial-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.ab-testimonial-rating {
+  color: green;
+  margin-bottom: 10px;
+}
+
+.ab-testimonial-rating span {
+  font-size: 1.2rem;
+}
+
+.ab-testimonial-text {
+  font-size: 1rem;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+/* Subscription Section Styles */
+.ab-subscription-section {
+  padding: 40px 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.ab-subscription-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.ab-subscription-text {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.ab-subscription-form {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.ab-subscription-input {
+  
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: 2px solid green;
+  border-radius: 20px;
+  width: 300px;
+  max-width: 100%;
+}
+
+.ab-subscription-button {
+
+  background: white;
+  color: green;
+  border: 2px solid green;
+  padding: 10px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.ab-subscription-button:hover {
+  background: green;
+  color: white;
+}
+
+/* Get in Touch Section Styles */
+.ab-get-in-touch-section {
+  padding: 40px 20px;
+  background: #fff;
+}
+
+.ab-get-in-touch-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.ab-get-in-touch-title::before,
+.ab-get-in-touch-title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 100px;
+  height: 2px;
+  background: green;
+}
+
+.ab-get-in-touch-title::before {
+  left: 0;
+  transform: translateX(80px);
+}
+
+.ab-get-in-touch-title::after {
+  right: 0;
+  transform: translateX(-80px);
+}
+
+.ab-get-in-touch-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.ab-contact-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.ab-contact-info h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.ab-contact-info p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.ab-contact-info a {
+  color: green;
+  text-decoration: none;
+}
+
+.ab-contact-info a:hover {
+  text-decoration: underline;
+}
+
+.ab-map-placeholder {
+  flex: 1;
+  min-width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ab-map-placeholder iframe {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .ab-header-title {
+    font-size: 2.5rem;
+  }
+
+  .ab-section-title {
+    font-size: 1.8rem;
+  }
+
+  .ab-blog-title::before,
+  .ab-blog-title::after {
+    width: 50px;
+  }
+
+  .ab-blog-title::before {
+    transform: translateX(50px);
+  }
+
+  .ab-blog-title::after {
+    transform: translateX(-50px);
+  }
+
+  .ab-testimonial-title::before,
+  .ab-testimonial-title::after {
+    width: 50px;
+  }
+
+  .ab-testimonial-title::before {
+    transform: translateX(50px);
+  }
+
+  .ab-testimonial-title::after {
+    transform: translateX(-50px);
+  }
+
+  .ab-subscription-title::before,
+  .ab-subscription-title::after {
+    width: 50px;
+  }
+
+  .ab-subscription-title::before {
+    transform: translateX(50px);
+  }
+
+  .ab-subscription-title::after {
+    transform: translateX(-50px);
+  }
+
+  .ab-get-in-touch-title::before,
+  .ab-get-in-touch-title::after {
+    width: 50px;
+  }
+
+  .ab-get-in-touch-title::before {
+    transform: translateX(50px);
+  }
+
+  .ab-get-in-touch-title::after {
+    transform: translateX(-50px);
+  }
+
+  .ab-get-in-touch-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ab-map-placeholder {
+    height: 200px;
+  }
+
+  .ab-mission-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ab-mission-image {
+    height: 200px;
+  }
+
+  .ab-testimonial-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ab-testimonial-profile-pic {
+    margin-bottom: 10px;
+  }
+
+  .ab-subscription-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ab-subscription-input {
+    width: 100%;
+  }
+}

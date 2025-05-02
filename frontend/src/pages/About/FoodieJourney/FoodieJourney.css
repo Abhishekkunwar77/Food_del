@@ -1,0 +1,156 @@
+.fj-blog-page-container {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px;
+}
+
+.fj-blog-header {
+  text-align: center;
+  padding: 60px 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.fj-blog-title {
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.fj-blog-date {
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.fj-blog-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.fj-blog-image-placeholder {
+  width: 100%;
+  height: 400px;
+  background: #f1f1f1;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fj-blog-image-placeholder.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fj-blog-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fj-blog-text p {
+  font-size: 1.2rem;
+  color: #4a5568;
+  line-height: 1.9;
+  margin-bottom: 25px;
+}
+
+.fj-button-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.fj-back-button {
+  background: white;
+  color: green;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border:2px solid green;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.fj-back-button:hover {
+  background: green;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.fj-back-icon {
+  font-size: 1.2rem;
+}
+
+.fj-share-button {
+  border:2px solid green;
+  background: white;
+  color: green;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.fj-share-button:hover {
+  background: green;
+  color: white;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .fj-blog-title {
+    font-size: 2.2rem;
+  }
+
+  .fj-blog-content {
+    padding: 0 15px;
+  }
+
+  .fj-blog-image-placeholder {
+    height: 250px;
+  }
+
+  .fj-blog-text p {
+    font-size: 1.1rem;
+  }
+
+  .fj-back-button, .fj-share-button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+
+  .fj-button-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fj-blog-header {
+    padding: 40px 15px;
+  }
+
+  .fj-blog-title {
+    font-size: 1.8rem;
+  }
+
+  .fj-blog-date {
+    font-size: 0.9rem;
+  }
+
+  .fj-blog-image-placeholder {
+    height: 200px;
+  }
+}

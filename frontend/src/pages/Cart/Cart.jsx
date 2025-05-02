@@ -80,7 +80,7 @@ const Cart = () => {
                 <div className="cart-total-details">
                   <b>Total</b>
                   <b>
-                    ${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}
+                    ${(getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2).toFixed(2)}
                   </b>
                 </div>
               </div>

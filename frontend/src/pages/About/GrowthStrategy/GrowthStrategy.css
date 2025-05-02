@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.gs-blog-page-container {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px;
+}
+
+.gs-blog-header {
+  text-align: center;
+  padding: 60px 20px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+}
+
+.gs-blog-title {
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.gs-blog-date {
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.gs-blog-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.gs-blog-image-placeholder {
+  width: 100%;
+  height: 400px;
+  background: #f1f1f1;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.gs-blog-image-placeholder.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gs-blog-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gs-blog-text p {
+  font-size: 1.2rem;
+  color: #4a5568;
+  line-height: 1.9;
+  margin-bottom: 25px;
+}
+
+.gs-button-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.gs-back-button {
+  background: white;
+  color: green;
+border:2px solid green;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.gs-back-button:hover {
+  background: green;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.gs-back-icon {
+  font-size: 1.2rem;
+}
+
+.gs-share-button {
+  background: white;
+  color:green;
+  border: 2px solid green;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gs-share-button:hover {
+  background: green;
+  color: white;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .gs-blog-title {
+    font-size: 2.2rem;
+  }
+
+  .gs-blog-content {
+    padding: 0 15px;
+  }
+
+  .gs-blog-image-placeholder {
+    height: 250px;
+  }
+
+  .gs-blog-text p {
+    font-size: 1.1rem;
+  }
+
+  .gs-back-button, .gs-share-button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+
+  .gs-button-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gs-blog-header {
+    padding: 40px 15px;
+  }
+
+  .gs-blog-title {
+    font-size: 1.8rem;
+  }
+
+  .gs-blog-date {
+    font-size: 0.9rem;
+  }
+
+  .gs-blog-image-placeholder {
+    height: 200px;
+  }
+}
