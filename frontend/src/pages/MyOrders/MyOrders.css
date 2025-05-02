@@ -1,6 +1,3 @@
-/* MyOrders.css */
-
-/* Root container for the orders page */
 .my-orders {
   padding: 40px 20px;
   margin: 0 auto;
@@ -26,7 +23,7 @@
 /* Individual order card */
 .my-orders-order {
   display: grid;
-  grid-template-columns: 60px 2fr 1fr 1fr 1fr;
+  grid-template-columns: 40px 2fr 1fr 1fr 1fr;
   align-items: center;
   background-color: #fff;
   border-radius: 10px;
