@@ -518,3 +518,15 @@
     width: 100%;
   }
 }
+
+/* Subscription Message */
+.ab-subscription-message {
+  margin-top: 10px;
+  color: #28a745; /* Green for success */
+  font-size: 14px;
+  text-align: center;
+}
+
+.ab-subscription-message.error {
+  color: #dc3545; /* Red for error */
+}

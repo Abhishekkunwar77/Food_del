@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./About.css";
 
 import blog1 from "../../assets/blog1.png";
@@ -18,29 +21,47 @@ import aboutprofile3 from "../../assets/aboutprofile3.png";
 
 const About = () => {
   const location = useLocation();
+
   useEffect(() => {
     document.title = "Foodie - About";
   }, []);
+
   // Scroll to top when the page loads
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [location.pathname]); // Trigger on route change
+  }, [location.pathname]);
 
   const handleReadMore = (blogSlug) => {
-    // Open the corresponding blog page in a new tab
     window.open(`/blog/${blogSlug}`, "_blank");
   };
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
     const email = e.target.elements.email.value;
-    // Placeholder for subscription logic (e.g., API call)
-    alert(`Subscribed with email: ${email}`);
-    e.target.reset();
+
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/api/subscriber/subscribe",
+        {
+          email,
+        }
+      );
+      toast.success(response.data.message, {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      e.target.reset();
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Error subscribing", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    }
   };
 
   return (
     <div className="ab-about-container">
+      <ToastContainer />
       <header className="ab-about-header">
         <h1 className="ab-header-title">
           Foodie – Satisfy Your Cravings Instantly
@@ -190,7 +211,7 @@ const About = () => {
               </div>
               <p className="ab-testimonial-text">
                 "Foodie has transformed my dining experience! The variety of
-                cuisines is amazing, and the delivery is always on time." 
+                cuisines is amazing, and the delivery is always on time."
               </p>
             </div>
           </div>
@@ -246,7 +267,7 @@ const About = () => {
           Stay updated with the latest Foodie news, exclusive offers, and
           delicious recipes!
         </p>
-        <div className="ab-subscription-form">
+        <form className="ab-subscription-form" onSubmit={handleSubscribe}>
           <input
             type="email"
             name="email"
@@ -254,14 +275,10 @@ const About = () => {
             className="ab-subscription-input"
             required
           />
-          <button
-            type="submit"
-            className="ab-subscription-button"
-            onClick={handleSubscribe}
-          >
+          <button type="submit" className="ab-subscription-button">
             Subscribe
           </button>
-        </div>
+        </form>
       </section>
 
       <section className="ab-get-in-touch-section">
