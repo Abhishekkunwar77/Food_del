@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaTrash, FaSync, FaTimes } from "react-icons/fa";
 import { toast } from "react-toastify";
@@ -9,12 +10,31 @@ const Subscribers = () => {
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [subscriberToDelete, setSubscriberToDelete] = useState(null);
+  const navigate = useNavigate();
+
+  // Check if admin is logged in
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast.error("Please log in to view subscribers", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const fetchSubscribers = async () => {
     setLoading(true);
     try {
+      const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:4000/api/subscriber/subscribers"
+        "http://localhost:4000/api/subscriber/subscribers",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
       // Sort by subscribedAt in descending order (newest first)
       const sortedSubscribers = response.data.sort(
@@ -27,18 +47,30 @@ const Subscribers = () => {
         position: "top-right",
         autoClose: 3000,
       });
+      if (error.response?.status === 401) {
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchSubscribers();
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetchSubscribers();
+    }
   }, []);
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/subscriber/${id}`);
+      const token = localStorage.getItem("token");
+      await axios.delete(`http://localhost:4000/api/subscriber/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setSubscribers(subscribers.filter((subscriber) => subscriber._id !== id));
       toast.success("Subscriber deleted successfully", {
         position: "top-right",
@@ -53,6 +85,10 @@ const Subscribers = () => {
           autoClose: 3000,
         }
       );
+      if (error.response?.status === 401) {
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
     }
   };
 

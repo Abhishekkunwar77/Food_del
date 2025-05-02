@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AdminLogin from "./components/AdminLogin/AdminLogin";
 import Subscribers from "./pages/Subscribers/Subscribers";
+import Home from "./pages/Home/Home";
 const App = () => {
   const url = "http://localhost:4000";
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/list" element={<List url={url} />} />
           <Route path="/orders" element={<Orders url={url} />} />
           <Route path="/subscribers" element={<Subscribers url={url} />} />
+          <Route path="/" element={<Home url={url} />} />
         </Routes>
       </div>
     </div>

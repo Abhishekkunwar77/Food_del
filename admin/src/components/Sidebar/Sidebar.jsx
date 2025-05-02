@@ -1,12 +1,16 @@
 import React from "react";
 import "./Sidebar.css";
 import { NavLink } from "react-router-dom";
-import { FaPlus, FaList, FaShoppingCart, FaUsers } from "react-icons/fa";
+import { FaPlus, FaList, FaShoppingCart, FaUsers, FaHome } from "react-icons/fa";
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar-options">
+        <NavLink to="/" className="sidebar-option">
+          <FaHome className="sidebar-icon" />
+          <p>Home</p>
+        </NavLink>
         <NavLink to="/add" className="sidebar-option">
           <FaPlus className="sidebar-icon" />
           <p>Add Items</p>

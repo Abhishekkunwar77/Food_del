@@ -49,8 +49,9 @@
   background: #e74c3c;
   color: #fff;
   border: none;
-  padding: 8px 11px;
-  border-radius: 6px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
   cursor: pointer;
   font-size: 15px;
   transition: transform 0.2s, background 0.3s;
@@ -61,7 +62,7 @@
 }
 
 .s-table {
-        border: 1px solid grey;
+  border: 1px solid grey;
 
   width: 100%;
   border-collapse: collapse;
@@ -72,7 +73,6 @@
 
 .s-table th,
 .s-table td {
-    
   padding: 15px;
   text-align: left;
   border-bottom: 1px solid grey;
@@ -81,7 +81,6 @@
 .s-table th {
   font-weight: 600;
   font-size: 14px;
-
 }
 
 .s-table td {
@@ -112,8 +111,9 @@
   font-size: 18px;
   color: green;
   justify-content: center;
-  margin: 30px 0;
   animation: pulse 1.5s infinite;
+  justify-content: center;
+  margin-top: 250px;
 }
 
 .s-spinning {

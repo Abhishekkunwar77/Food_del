@@ -35,8 +35,6 @@ router.get("/subscribers", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-
-// Delete a subscriber
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -50,5 +48,4 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-
 export default router;
