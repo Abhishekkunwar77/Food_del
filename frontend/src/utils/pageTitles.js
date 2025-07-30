@@ -7,7 +7,7 @@ export const routeTitles = {
   "/myorders": "Foodie - My Orders",
   "/privacy-policy": "Foodie - Privacy Policy",
   "/about": "Foodie - About",
-  "/blog/foodie-journey": "Foodie - Foodie Journey",
-  "/blog/growth-strategy": "Foodie - Growth Strategy",
-  "/blog/expansion-story": "Foodie - Expansion Story",
+  "/blog/foodie-journey": "Foodie | Blog - Foodie Journey",
+  "/blog/growth-strategy": "Foodie | Blog - Growth Strategy",
+  "/blog/expansion-story": "Foodie | Blog - Expansion Story",
 };

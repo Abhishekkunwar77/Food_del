@@ -3,7 +3,6 @@ import { IoArrowBack } from "react-icons/io5";
 import "./ExpansionStory.css";
 import expansionStory from "../../../assets/expansionStory.png";
 import { useEffect, useState } from "react";
-
 const ExpansionStory = () => {
   const navigate = useNavigate();
   const [isImageLoaded, setIsImageLoaded] = useState(false);
@@ -33,9 +32,7 @@ const ExpansionStory = () => {
 
   return (
     <div className="es-blog-page-container">
-      <Helmet>
-        <title>Foodie - Blog</title>
-      </Helmet>
+   
       <header className="es-blog-header">
         <h1 className="es-blog-title">
           From Local to National: Foodie's Expansion Story

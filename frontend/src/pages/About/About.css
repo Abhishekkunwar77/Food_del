@@ -530,3 +530,254 @@
 .ab-subscription-message.error {
   color: #dc3545; /* Red for error */
 }
+/* Mobile-specific styles for screens up to 480px */
+@media (max-width: 480px) {
+  .ab-about-container {
+    padding: 10px;
+    margin-top: 20px;
+  }
+
+  .ab-about-header {
+    padding: 20px 10px;
+    margin-bottom: 20px;
+  }
+
+  .ab-header-title {
+    font-size: 2rem;
+  }
+
+  .ab-header-subtitle {
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+
+  .ab-section-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .ab-section-text {
+    font-size: 1rem;
+  }
+
+  .ab-why-choose-section {
+    margin-bottom: 40px;
+  }
+
+  .ab-why-choose-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .ab-why-choose-item {
+    padding: 15px;
+  }
+
+  .ab-why-choose-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .ab-why-choose-item h3 {
+    font-size: 1.3rem;
+  }
+
+  .ab-why-choose-item p {
+    font-size: 0.9rem;
+  }
+
+  .ab-mission-section {
+    margin-bottom: 40px;
+  }
+
+  .ab-mission-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ab-mission-image {
+    min-width: 100%;
+    height: 200px;
+  }
+
+  .ab-mission-text {
+    min-width: 100%;
+  }
+
+  .ab-blog-section {
+    padding: 20px 10px;
+  }
+
+  .ab-blog-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .ab-blog-title::before,
+  .ab-blog-title::after {
+    width: 40px;
+  }
+
+  .ab-blog-title::before {
+    transform: translateX(50px);
+  }
+
+  .ab-blog-title::after {
+    transform: translateX(-50px);
+  }
+
+  .ab-blog-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .ab-blog-image-placeholder {
+    height: 120px;
+    font-size: 0.9rem;
+  }
+
+  .ab-blog-content {
+    padding: 10px;
+  }
+
+  .ab-blog-date {
+    font-size: 0.8rem;
+  }
+
+  .ab-blog-card-title {
+    font-size: 1.1rem;
+  }
+
+  .ab-read-more-button {
+    padding: 6px 15px;
+    font-size: 0.8rem;
+  }
+
+  .ab-testimonial-section {
+    padding: 20px 10px;
+  }
+
+  .ab-testimonial-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .ab-testimonial-title::before,
+  .ab-testimonial-title::after {
+    width: 40px;
+  }
+
+  .ab-testimonial-title::before {
+    transform: translateX(50px);
+  }
+
+  .ab-testimonial-title::after {
+    transform: translateX(-50px);
+  }
+
+  .ab-testimonial-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .ab-testimonial-card {
+    padding: 15px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ab-testimonial-profile-pic {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+
+  .ab-testimonial-name {
+    font-size: 1.1rem;
+  }
+
+  .ab-testimonial-rating span {
+    font-size: 1rem;
+  }
+
+  .ab-testimonial-text {
+    font-size: 0.9rem;
+  }
+
+  .ab-subscription-section {
+    padding: 20px 10px;
+    margin-bottom: 20px;
+  }
+
+  .ab-subscription-title {
+    font-size: 1.5rem;
+  }
+
+  .ab-subscription-text {
+    font-size: 1rem;
+  }
+
+  .ab-subscription-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ab-subscription-input {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  .ab-subscription-button {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+
+  .ab-get-in-touch-section {
+    padding: 20px 10px;
+  }
+
+  .ab-get-in-touch-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .ab-get-in-touch-title::before,
+  .ab-get-in-touch-title::after {
+    width: 40px;
+  }
+
+  .ab-get-in-touch-title::before {
+    transform: translateX(50px);
+  }
+
+  .ab-get-in-touch-title::after {
+    transform: translateX(-50px);
+  }
+
+  .ab-get-in-touch-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ab-contact-info {
+    min-width: 100%;
+  }
+
+  .ab-contact-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .ab-contact-info p {
+    font-size: 0.9rem;
+  }
+
+  .ab-map-placeholder {
+    min-width: 100%;
+    height: 200px;
+  }
+
+  .ab-subscription-message {
+    font-size: 0.9rem;
+  }
+}

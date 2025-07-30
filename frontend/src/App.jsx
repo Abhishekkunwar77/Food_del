@@ -14,6 +14,7 @@ import ExpansionStory from "./pages/About/ExpansionStory/ExpansionStory";
 import FoodieJourney from "./pages/About/FoodieJourney/FoodieJourney";
 import GrowthStrategy from "./pages/About/GrowthStrategy/GrowthStrategy";
 import TitleUpdater from "./utils/TitleUpdater";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="/blog/growth-strategy" element={<GrowthStrategy />} />
           <Route path="/blog/expansion-story" element={<ExpansionStory />} />
         </Routes>
+        <ToastContainer autoClose={1200}/>
       </div>
       <Footer />
     </>

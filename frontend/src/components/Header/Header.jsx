@@ -9,7 +9,15 @@ const Header = () => {
           From comforting classics to exotic delights—your next meal is just a
           tap away!
         </p>
-        <button>View Menu</button>
+        <button
+          onClick={() => {
+            document
+              .getElementById("food-display")
+              .scrollIntoView({ behavior: "smooth" });
+          }}
+        >
+          View Menu
+        </button>
       </div>
     </div>
   );

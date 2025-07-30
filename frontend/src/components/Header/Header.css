@@ -4,6 +4,7 @@
   background: url("../../assets/Landing.png") no-repeat;
   background-size: contain;
   position: relative;
+  border-radius: 25px;
 }
 
 .header-contents {
@@ -27,16 +28,18 @@
   font-size: 1vw;
 }
 .header-contents button {
-  border: none;
   color: #747474;
   font-weight: 500;
   padding: 1vw 2.3vw;
   background-color: white;
   font-size: max(1vw, 13px);
   border-radius: 50px;
+  border:2px solid grey;
 }
 .header-contents button:hover{
 cursor: pointer;
+color:green;
+border:2px solid green;
 
 
 }

@@ -8,10 +8,6 @@ const FoodieJourney = () => {
 
 
   useEffect(() => {
-    document.title = "Foodie - Blog";
-  }, []);
-
-  useEffect(() => {
     window.scrollTo(0, 0); // Scroll to top on page load
 
     // Trigger image animation after load
