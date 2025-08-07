@@ -11,7 +11,7 @@ import AdminLogin from "./components/AdminLogin/AdminLogin";
 import Subscribers from "./pages/Subscribers/Subscribers";
 import Home from "./pages/Home/Home";
 const App = () => {
-  const url = "http://localhost:4000";
+const url = import.meta.env.VITE_API_URL;
   return (
     <div>
       <ToastContainer autoClose={1200} />
