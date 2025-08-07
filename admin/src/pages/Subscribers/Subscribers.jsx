@@ -29,7 +29,7 @@ const Subscribers = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:4000/api/subscriber/subscribers",
+        "https://food-del-1-thov.onrender.com/api/subscriber/subscribers",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -66,11 +66,14 @@ const Subscribers = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:4000/api/subscriber/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.delete(
+        `https://food-del-1-thov.onrender.com/api/subscriber/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setSubscribers(subscribers.filter((subscriber) => subscriber._id !== id));
       toast.success("Subscriber deleted successfully", {
         position: "top-right",
