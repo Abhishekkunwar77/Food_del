@@ -13,7 +13,13 @@ const port = 4000;
 
 //middlewares
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://food-del-rr63.vercel.app", // Replace with your actual frontend URL
+    credentials: true,
+  })
+);
+
 
 // DB connection
 connectDB();

@@ -19,6 +19,19 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+router.post("/", async (req, res) => {
+  console.log("POST /api/food hit");
+  console.log("Body:", req.body);
+  try {
+    // your create logic here
+    res.status(201).json({ success: true });
+  } catch (error) {
+    console.error("Error creating food:", error.message);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+
 foodRouter.post("/add", upload.single("image"), addFood);
 foodRouter.get("/list", listFood);
 foodRouter.post("/remove",  removeFood);
