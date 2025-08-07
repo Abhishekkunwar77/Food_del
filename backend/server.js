@@ -13,12 +13,24 @@ const port = 4000;
 
 //middlewares
 app.use(express.json());
+const allowedOrigins = [
+  "https://food-del-3lpg.vercel.app", // Customer frontend
+  "https://admin-virid-eight.vercel.app", // Admin panel
+];
+
 app.use(
   cors({
-    origin: "https://food-del-3lpg.vercel.app/", // Replace with your actual frontend URL
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
+
 
 
 // DB connection
