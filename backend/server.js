@@ -15,7 +15,7 @@ const port = 4000;
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://food-del-rr63.vercel.app", // Replace with your actual frontend URL
+    origin: "https://food-del-3lpg.vercel.app/", // Replace with your actual frontend URL
     credentials: true,
   })
 );
