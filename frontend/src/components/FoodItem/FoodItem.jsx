@@ -18,8 +18,8 @@ const FoodItem = ({ id, name, price, description, image }) => {
       <div className="food-item-img-container">
         <img
           className="food-item-image"
-          src={url + "/uploads/" + image}
-          alt=""
+          src={url + "/images/" + image}
+          alt="Food Item"
         />
 
         {!cartItems[id] ? (
