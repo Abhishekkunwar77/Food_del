@@ -18,7 +18,7 @@ const Subscribers = () => {
     if (!token) {
       toast.error("Please log in to view subscribers", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 1200,
       });
       navigate("/login");
     }
@@ -45,7 +45,7 @@ const Subscribers = () => {
       console.error("Error fetching subscribers:", error);
       toast.error("Failed to fetch subscribers", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 1200,
       });
       if (error.response?.status === 401) {
         localStorage.removeItem("token");
@@ -74,7 +74,7 @@ const Subscribers = () => {
       setSubscribers(subscribers.filter((subscriber) => subscriber._id !== id));
       toast.success("Subscriber deleted successfully", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 1200,
       });
     } catch (error) {
       console.error("Error deleting subscriber:", error);
@@ -82,7 +82,7 @@ const Subscribers = () => {
         error.response?.data?.message || "Failed to delete subscriber",
         {
           position: "top-right",
-          autoClose: 3000,
+          autoClose: 1200,
         }
       );
       if (error.response?.status === 401) {
