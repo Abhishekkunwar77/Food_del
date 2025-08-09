@@ -40,12 +40,11 @@ const About = () => {
     const email = e.target.elements.email.value;
 
     try {
-      const response = await axios.post(
-        "http://localhost:4000/api/subscriber/subscribe",
-        {
-          email,
-        }
-      );
+     const response = await axios.post(
+       `${import.meta.env.VITE_API_BASE_URL}/api/subscriber/subscribe`,
+       { email }
+     );
+
       toast.success(response.data.message, {
         position: "top-right",
         autoClose: 3000,
