@@ -12,16 +12,17 @@ const FoodDisplay = ({ category }) => {
       <div className="food-display-list">
         {food_list
           .filter(
-            (item) => item && (category === "All" || category === item.category)
+            (item) =>
+              item && (category === "All" || category === item?.category)
           )
           .map((item, index) => (
             <FoodItem
               key={index}
-              id={item._id}
-              name={item.name || "No name"}
-              description={item.description || ""}
-              price={item?.price || "N/A"}
-              image={`${url}${item.image}`} // ✅ full URL
+              id={item?._id || index}
+              name={item?.name || "No name"}
+              description={item?.description || ""}
+              price={item?.price ?? "N/A"} // use nullish coalescing for price
+              image={item?.image ? `${url}${item.image}` : `${url}/default.jpg`}
             />
           ))}
       </div>
