@@ -22,7 +22,7 @@ const Footer = () => {
           <FaArrowUp />
         </button>
         <div className="footer-content-left">
-          <img src={assets.logo} alt="" />
+          <img className='footer-logo' src={assets.logo} alt="" />
 
           <p>
             From breakfast to late-night cravings, we ensure every bite is
